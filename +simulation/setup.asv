@@ -1,0 +1,21 @@
+function [swmm, settings] = setup(swmm, path, control_variant, sim_time)
+
+    % Retrieve Object IDs from the SWMM *.inp file
+    settings.ID.links = swmm.get_all(path, swmm.LINK, swmm.NONE);                            
+    settings.ID.nodes = swmm.get_all(path, swmm.NODE, swmm.NONE);                            
+    settings.ID.catchments = swmm.get_all(path, swmm.SUBCATCH, swmm.NONE);
+    settings.ID.storages = swmm.get_all(path, swmm.STORAGE, swmm.NONE);                      
+    settings.ID.orifices = swmm.get_all(path, swmm.ORIFICE, swmm.NONE);
+    
+    % Initialize simulator network
+    swmm.initialize(path)
+    if swwm.is_initialized
+        disp("SWMM simulator initialized!")
+    else
+        disp("SWMM simulator error!")
+    end
+
+    % Network settings
+    settings.sim.
+
+end

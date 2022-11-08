@@ -1,0 +1,35 @@
+clc;
+clear all;
+
+%% Initialize SWMM
+inp = 'swmm_files\Astlingen_SWMM.INP';
+sim_time = 
+[swmm,settings] = simulation.setup(SWMM, inp, 'ON/OFF', 10000);
+
+%%
+
+i = 1;
+
+try 
+    while ~swmm.is_over
+        
+        time = swmm.run_step;                                                      % execute 1 sampling step
+    
+%         level_T1(i) = swmm.get('Tank1',swmm.DEPTH,SWMM.SI);                 % read level 
+%         level_T2(i) = swmm.get('Tank2',swmm.DEPTH,SWMM.SI);                 % read level         
+%         flow_C2(i)  = swmm.get('C2',swmm.FLOW,SWMM.SI);                     % read flow after orifice
+%         flow_C7(i)  = swmm.get('C7',swmm.FLOW,SWMM.SI);                     % read flow after orifice
+            
+%        controlModule;                                                      % on/off level control 
+        
+        i = i+1                                                             % iterate time      
+    end
+catch 
+    fprintf('Simulation error \n');
+    [errors, duration] = swmm.finish;
+end 
+f = swmm.total_flooding;
+[errors, duration] = swmm.finish;
+
+%%
+%plotResults;
