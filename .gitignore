@@ -1,0 +1,6 @@
+# List of untracked files to ignore
+
+*.csv
+*.txt
+*.rpt
+*.out
