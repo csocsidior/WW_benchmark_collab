@@ -5,3 +5,10 @@
 *.rpt
 *.out
 *.asv
+Links/
+Nodes/
+Subcatchments/
+Time/
+swmm_files/astlingen_swmm.rpt
+swmm_files/astlingen_SWMM.ini
+swmm_files/Astlingen_SWMM.out

@@ -15,7 +15,7 @@ function [swmm, settings] = setup(swmm, path, control_variant, sim_time)
     settings.control.dt = 120;
     settings.sim.dt = 30;  %[seconds]
 
-    % Operational settings
+    % Tank physical constraints
     settings.control.level_max(1) = 4.5;
     settings.control.level_max(2) = 4.5;
     settings.control.level_max(3) = 4.5;
@@ -29,6 +29,7 @@ function [swmm, settings] = setup(swmm, path, control_variant, sim_time)
     settings.control.level_min(5) = 0.3;
     settings.control.level_min(6) = 0.3;
     
+    % Valve opening degree constraints
     settings.control.OD_max(1) = 1;
     settings.control.OD_max(2) = 1;
     settings.control.OD_max(3) = 1;
