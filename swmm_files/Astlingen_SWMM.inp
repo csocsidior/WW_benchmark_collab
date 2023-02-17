@@ -271,13 +271,13 @@ Tank6                       5          120
 [TIMESERIES]
 ;;Name           Date       Time       Value     
 ;;-------------- ---------- ---------- ----------
-rain1            FILE "C:\git\WwVolumeControl\research\Grundfos_Bogota_collab\SWMM_files\rain_files\1Astlingen_Erft1.txt"
+rain1            FILE "swmm_files\rain_files\1Astlingen_Erft1.txt"
 ;
-rain2            FILE "C:\git\WwVolumeControl\research\Grundfos_Bogota_collab\SWMM_files\rain_files\2Astlingen_Erft2.txt"
+rain2            FILE "swmm_files\rain_files\2Astlingen_Erft2.txt"
 ;
-rain3            FILE "C:\git\WwVolumeControl\research\Grundfos_Bogota_collab\SWMM_files\rain_files\3Astlingen_Erft3.txt"
+rain3            FILE "swmm_files\rain_files\3Astlingen_Erft3.txt"
 ;
-rain4            FILE "C:\git\WwVolumeControl\research\Grundfos_Bogota_collab\SWMM_files\rain_files\4Astlingen_Erft4.txt"
+rain4            FILE "swmm_files\rain_files\4Astlingen_Erft4.txt"
 
 [PATTERNS]
 ;;Name           Type       Multipliers
@@ -424,5 +424,5 @@ RG4              8346.939           6707.483
 
 
 [BACKDROP]
-FILE       "C:\git\WwVolumeControl\research\Grundfos_Bogota_collab\SWMM_files\backdrop.jpg"
+FILE       "swmm_files\backdrop.jpg"
 DIMENSIONS -3888.889 0.000 13888.889 10000.000
