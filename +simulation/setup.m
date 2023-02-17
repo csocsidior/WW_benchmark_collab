@@ -1,4 +1,4 @@
-function [swmm, settings] = setup(swmm, path, control_variant, sim_time)
+function [swmm, settings] = setup(swmm, path, control_variant, simulationDuration)
 
     % Object IDs from the SWMM *.inp file
     settings.ID.link = swmm.get_all(path, swmm.LINK, swmm.NONE);                            
@@ -7,14 +7,18 @@ function [swmm, settings] = setup(swmm, path, control_variant, sim_time)
     settings.ID.storage = swmm.get_all(path, swmm.STORAGE, swmm.NONE);                      
     settings.ID.orifice = swmm.get_all(path, swmm.ORIFICE, swmm.NONE);
     
-    % Initialize simulator network
+    % Initialize simulation network
     swmm.initialize(path)
 
-    settings.sim.sim_time = sim_time;
+    % Simulation duration
+    settings.sim.simulationDuration = simulationDuration;
+    % Simulation time step
+    settings.sim.timeStep = 30;  %[seconds]
+    % Control time step
+    settings.control.timeStep = 120; %[seconds]
+    % Control variant
     settings.control.variant = control_variant;
-    settings.control.dt = 120;
-    settings.sim.dt = 30;  %[seconds]
-
+    
     % Tank physical constraints
     settings.control.level_max(1) = 4.5;
     settings.control.level_max(2) = 4.5;

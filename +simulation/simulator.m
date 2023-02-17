@@ -1,18 +1,18 @@
 function [TT_sim, settings] = simulator(swmm,settings)
 
-    persistent OD
+    persistent openingDegree
     
-    if isempty(OD)
-        OD = zeros(6,1);
+    if isempty(openingDegree)
+        openingDegree = zeros(6,1);
     end
 
     % Simulation samples
-    T_stop = settings.sim.sim_time-settings.sim.dt;
-    N = T_stop/settings.sim.dt;
+    Tstop = settings.sim.simulationDuration-settings.sim.timeStep;
+    N = Tstop/settings.sim.timeStep;
     
     % Time keeping
     time = datetime('2022-05-28T00:00:00Z', 'InputFormat', 'uuuu-MM-dd''T''HH:mm:ssZ', 'TimeZone', 'UTC');
-    time = time + seconds(0:settings.sim.dt:T_stop);
+    time = time + seconds(0:settings.sim.timeStep:Tstop);
 
     % Timetable for measurements
     TT_sim = timetable( ...
@@ -65,15 +65,15 @@ function [TT_sim, settings] = simulator(swmm,settings)
         for k = 1:N
 
             % Display execution in terminal
-            if 0== mod(k,ceil(T_stop/settings.sim.dt/100))
+            if 0== mod(k,ceil(Tstop/settings.sim.timeStep/100))
               fprintf('%i %s \n',int32((k/N)*100),'%');
             end
 
             % Progress time
-            TT_sim.t(k+1) = k * settings.sim.dt;
+            TT_sim.t(k+1) = k * settings.sim.timeStep;
             
             % Run simulation step
-            time_swmm = swmm.run_step;    
+            swmm.run_step;    
 
             % Read sensors - storage
             TT_sim.h1(k) = swmm.get('T1',swmm.DEPTH,swmm.SI);
@@ -118,11 +118,11 @@ function [TT_sim, settings] = simulator(swmm,settings)
             TT_sim.d10(k) = swmm.get('SC010',swmm.PRECIPITATION,swmm.SI);
 
             % Control algorithm
-             if mod(TT_sim.t(k), settings.control.dt) == 0 && settings.control.variant == "ON/OFF"
+             if mod(TT_sim.t(k), settings.control.timeStep) == 0 && settings.control.variant == "ON/OFF"
     
-                [OD] = algorithm.control_ruleBased(k, TT_sim, settings.control, OD);
+                [openingDegree] = algorithm.control_ruleBased(k, TT_sim, settings.control, openingDegree);
     
-             elseif mod(TT_sim.t(k), settings.control.dt) == 0 && settings.control.variant == "replDynamics"
+             elseif mod(TT_sim.t(k), settings.control.timeStep) == 0 && settings.control.variant == "replDynamics"
                 %********************************************
 
                 % Here goes the developed algorithm
@@ -132,20 +132,20 @@ function [TT_sim, settings] = simulator(swmm,settings)
              end
 
              % Apply input 
-             swmm.modify_setting('V1', OD(1));
-             swmm.modify_setting('V2', OD(2));
-             swmm.modify_setting('V3', OD(3));
-             swmm.modify_setting('V4', OD(4));
-             swmm.modify_setting('V5', OD(5));
-             swmm.modify_setting('V6', OD(6));
+             swmm.modify_setting('V1', openingDegree(1));
+             swmm.modify_setting('V2', openingDegree(2));
+             swmm.modify_setting('V3', openingDegree(3));
+             swmm.modify_setting('V4', openingDegree(4));
+             swmm.modify_setting('V5', openingDegree(5));
+             swmm.modify_setting('V6', openingDegree(6));
 
              % Save input
-             TT_sim.OD1(k) = OD(1);
-             TT_sim.OD2(k) = OD(2);
-             TT_sim.OD3(k) = OD(3);
-             TT_sim.OD4(k) = OD(4);
-             TT_sim.OD5(k) = OD(5);
-             TT_sim.OD6(k) = OD(6);
+             TT_sim.OD1(k) = openingDegree(1);
+             TT_sim.OD2(k) = openingDegree(2);
+             TT_sim.OD3(k) = openingDegree(3);
+             TT_sim.OD4(k) = openingDegree(4);
+             TT_sim.OD5(k) = openingDegree(5);
+             TT_sim.OD6(k) = openingDegree(6);
                 
         end
     catch 
