@@ -9,7 +9,7 @@ else
 
 %% parameters
 epsilon = 0.05;
-beta = 0.1;
+beta = 0.05;
 
 %% sub-system 1: Tanks 3 and 6 (convergent)
 P1 = 1; %population
