@@ -126,7 +126,7 @@ function [TT_sim, settings] = simulator(swmm,settings)
                 %********************************************
 
                 % Here goes the developed algorithm
-                %[OD] = algorithm.control_replDynamics(.);
+                 [openingDegree] = algorithm.control_replDynamics(k, TT_sim, settings.control, openingDegree);
     
                 %********************************************
              end
