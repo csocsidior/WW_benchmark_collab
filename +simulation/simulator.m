@@ -120,13 +120,13 @@ function [TT_sim, settings] = simulator(swmm,settings)
             % Control algorithm
              if mod(TT_sim.t(k), settings.control.timeStep) == 0 && settings.control.variant == "ON/OFF"
     
-                [openingDegree] = algorithm.control_ruleBased(k, TT_sim, settings.control, openingDegree);
+                %[openingDegree] = algorithm.control_ruleBased(k, TT_sim, settings.control, openingDegree);
     
              elseif mod(TT_sim.t(k), settings.control.timeStep) == 0 && settings.control.variant == "replDynamics"
                 %********************************************
 
                 % Here goes the developed algorithm
-                %[OD] = algorithm.control_replDynamics(.);
+                 [openingDegree] = algorithm.control_replDynamics(k, TT_sim, settings.control, openingDegree);
     
                 %********************************************
              end
