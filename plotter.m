@@ -16,9 +16,9 @@ grid on
 subplot(N_row,6,2)
 plot(sim_res.Time, sim_res.h2,'red')
 hold on
-plot(sim_res.Time,settings.control.level_min(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_min(2)*ones(size(sim_res.h1)),'black--')
 hold on
-plot(sim_res.Time,settings.control.level_max(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_max(2)*ones(size(sim_res.h1)),'black--')
 grid on
 ylabel("Level (m)")
 title("Station 2 - Tank level")
@@ -38,9 +38,9 @@ grid on
 subplot(N_row,6,4)
 plot(sim_res.Time, sim_res.h4,'red')
 hold on
-plot(sim_res.Time,settings.control.level_min(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_min(4)*ones(size(sim_res.h1)),'black--')
 hold on
-plot(sim_res.Time,settings.control.level_max(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_max(4)*ones(size(sim_res.h1)),'black--')
 grid on
 ylabel("Level (m)")
 title("Station 4 - Tank level")
@@ -49,9 +49,9 @@ grid on
 subplot(N_row,6,5)
 plot(sim_res.Time, sim_res.h5,'red')
 hold on
-plot(sim_res.Time,settings.control.level_min(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_min(5)*ones(size(sim_res.h1)),'black--')
 hold on
-plot(sim_res.Time,settings.control.level_max(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_max(5)*ones(size(sim_res.h1)),'black--')
 grid on
 ylabel("Level (m)")
 title("Station 5 - Tank level")
@@ -60,9 +60,9 @@ grid on
 subplot(N_row,6,6)
 plot(sim_res.Time, sim_res.h6,'red')
 hold on
-plot(sim_res.Time,settings.control.level_min(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_min(6)*ones(size(sim_res.h1)),'black--')
 hold on
-plot(sim_res.Time,settings.control.level_max(3)*ones(size(sim_res.h1)),'black--')
+plot(sim_res.Time,settings.control.level_max(6)*ones(size(sim_res.h1)),'black--')
 grid on
 ylabel("Level (m)")
 title("Station 6 - Tank level")

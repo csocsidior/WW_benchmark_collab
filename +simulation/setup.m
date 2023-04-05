@@ -20,12 +20,12 @@ function [swmm, settings] = setup(swmm, path, control_variant, simulationDuratio
     settings.control.variant = control_variant;
     
     % Tank physical constraints
-    settings.control.level_max(1) = 4.5;
-    settings.control.level_max(2) = 4.5;
-    settings.control.level_max(3) = 4.5;
-    settings.control.level_max(4) = 4.5;
-    settings.control.level_max(5) = 4.5;
-    settings.control.level_max(6) = 4.5;
+    settings.control.level_max(1) = 2.5;
+    settings.control.level_max(2) = 5;
+    settings.control.level_max(3) = 2.5;
+    settings.control.level_max(4) = 2.5;
+    settings.control.level_max(5) = 5;
+    settings.control.level_max(6) = 5;
     settings.control.level_min(1) = 0.3;
     settings.control.level_min(2) = 0.3;
     settings.control.level_min(3) = 0.3;
